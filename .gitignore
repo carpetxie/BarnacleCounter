@@ -1,0 +1,6 @@
+myenv/
+myenv/
+myenv/
+*.dylib
+*.so
+*.log
