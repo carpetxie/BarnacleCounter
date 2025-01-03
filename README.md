@@ -2,6 +2,10 @@
 
 This is my submission for for the [Dartmouth DALI Lab 2025 Data Science Application]([url](https://dalilab.notion.site/2a99727739fb4a1b9c49548da435aa86#b7cca6cae95c47419246e08fdce12600))
 
+[https://dalilab.notion.site/2a99727739fb4a1b9c49548da435aa86#b7cca6cae95c47419246e08fdce12600](https://dalilab.notion.site/2a99727739fb4a1b9c49548da435aa86#b7cca6cae95c47419246e08fdce12600)
+
+
+
 # **Brief file descriptions**
 
 CropBarnacles.ipynb - Barnacles are placed under a green square. This function uses OpenCV to detect the centroid green square, cropping to that size and returning the image as well as the dimensions. 
