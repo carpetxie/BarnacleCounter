@@ -43,7 +43,8 @@ Just load the files into your local repository, ensure you download the needed l
 
 # **The ideation proceess**
 
-1. Cropping
+## Cropping
+
 To be honest, I spent a lot of time on this--by choice, however. I took up this project as a challenge to learn more intricately about PyTorch, data augmentation and several other deep learning and computer vision libraries. I walked into this project only scratching the surface, but now, as I am writing this, I have learned so much. 
 
 My first challenge was automating the cropping process, since the only relevant barnacles are the ones within the square. OpenCV was the most practical library to use. I looked over the documentation and attempted to detect the range of greens which mark the boundaries for the square, using a function to detect square like contour edges. The contour with the largest area was considered the centroid square. 
