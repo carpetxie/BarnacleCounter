@@ -14,17 +14,17 @@ Nearest2n.py - Simple function that, given a number val, returns the nearest 2^n
 
 #**Performance Metrics**
 
-**Pixel accuracy: 0.9774
+**Pixel accuracy:** 0.9774
 
-Precision: 0.9366
+**Precision:** 0.9366
 
-Recall: 0.9834
+**Recall:** 0.9834
 
-F1score: 0.9595
+**F1score:** 0.9595
 
-Average ratio of 0s to 1s: 2.5102
+**Average ratio of 0s to 1s:** 2.5102
 
-Training ratio of 0s to 1s: 2.6984**
+**Training ratio of 0s to 1s:** 2.6984
 
 I created the last two metrics as a basic metric when tweaking the model:
   1. Average ratio of 0s to 1s was the average ratio of background pixels to barnacle pixels in the *predicted image*
@@ -63,6 +63,7 @@ I had issues with dimension mismatch. Looking closely at documentation, MaxPool2
 
 I initially had horrible precision, recall, and accuracy at around 40%, 40%, 60%. This is perhaps where I spent the most time. Initially, the model was predicitng all background pixels. I blamed my data at first and increase augmenting. I used a scheduled learning rate. I increased epochs ( though they plateued relatively early on ). I addressed class imbalances by using a ratio of ~2.5 in my loss function. None of this worked. 
 
-The brekathrough was simply increasing the layers of my U-Net. Surprisngly, it was the model that was the issue and not the data. My original model only extracted 64 features at the deepest level before funneling back up. I added two more layers to extract 512 features. My performance metrics shot up. 
+The brekathrough was simply increasing the layers of my U-Net. Surprisngly, it was the model that was the issue and not the data. My original model only extracted 64 features at the deepest level before funneling back up. I added two more layers to extract 512 features. My performance metrics shot up to where it is today. 
+
 
 
