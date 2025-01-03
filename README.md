@@ -12,7 +12,7 @@ UNetModel.ipynb - Long file consisting of preprocessing, data augmentation, U-Ne
 
 Nearest2n.py - Simple function that, given a number val, returns the nearest 2^n to that number val. This is used to crop the image furthermore to a smaller size. The U-Net Conv2d and MaxPooling functions change the H x W dimension sizes by factors of 2. If dimension sizes are not factors of two, there may be issues with floating point numbers that cause conflict between matching dimensions in the U Net architecture pipeline. 
 
-#**Performance Metrics**
+# **Performance Metrics**
 
 **Pixel accuracy:** 0.9774
 
