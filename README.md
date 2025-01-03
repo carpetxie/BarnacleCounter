@@ -51,13 +51,13 @@ My first challenge was automating the cropping process, since the only relevant 
 
 Unfortunately, this was a pitfall because this only works for one image. I didn't want to spend too much time playing around with libraries so I decided to move forward.
 
-2. Preprocessing
+## Preprocessing
 The next challenge was preprocessing the data. I had the necessary cropped input image but I needed to mask a binary mask with the masked images. This was also quite simple using OpenCV, detecting the contour edges of the mask( which was easy due to the sharp contrast ), filling in the edges, resulting in a binary mask of 0s and 1s, where 0 represents background and 1s represents a pixel associated with a barnacle.
 
-3. Data augmentation
+## Data augmentation
 As mentioned before, the cropping only worked for one image. I used albumentations and OpenCV, with nested for loops to generate 600 images of varying noise, rotations, reflections, brightness and shifts. I would not be surprised if my model only worked for this one image since the weights are tailored specifically from 600 variations of one image. This is a major pitfall of the program.
 
-4. U-Net
+## U-Net
 The U-Net is fantastic for segmentation. The issue with traditional CNNs is that as you extract higher level features, the resolution dissolves, and vice versa. With skip connections, U-Nets take the best in either end of spectrums : images are funneled into the encoder, decreasing resolution yet with higher levels of features. These features are saved. As the values pass the bottle neck and into the decoder, spatial dimensions increase once again while features decrease. Skip connections connect the higher level features of the encoder to the higher resolution of the decoder.
 
 I had issues with dimension mismatch. Looking closely at documentation, MaxPool2d decreases spatial dimensions by factor of the kernel_size. Conv2d extracts channel dimensions. Skip connections and concatenations were used to connect the encoder with the decoder and to maintain complementary dimension sizes. ConvTranpose2d, used within the decoder, had a reversal effect of funneling channel dimensions while changing spatial dimension sizes. 
