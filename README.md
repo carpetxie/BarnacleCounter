@@ -66,7 +66,7 @@ I initially had horrible precision, recall, and accuracy at around 40%, 40%, 60%
 
 The brekathrough was simply increasing the layers of my U-Net. Surprisngly, it was the model that was the issue and not the data. My original model only extracted 64 features at the deepest level before funneling back up. I added two more layers to extract 512 features. My performance metrics shot up to where it is today. 
 
-## #1589F0 Final
+## Final
 
 The model has good performance metrics, but only for one image. This could certainly serve as a general solution with a more diverse dataset and with a functional solution to cropping images around the green border. 
 
