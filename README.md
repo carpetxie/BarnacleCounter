@@ -38,17 +38,21 @@ Just load the files into your local repository, ensure you download the needed l
 
 # **The ideation proceess**
 
-1. To be honest, I spent a lot of time on this--by choice, however. I took up this project as a challenge to learn more intricately about PyTorch, data augmentation and several other deep learning and computer vision libraries. I walked into this project only scratching the surface, but now, as I am writing this, I have learned so much. 
+1.
+To be honest, I spent a lot of time on this--by choice, however. I took up this project as a challenge to learn more intricately about PyTorch, data augmentation and several other deep learning and computer vision libraries. I walked into this project only scratching the surface, but now, as I am writing this, I have learned so much. 
 
 My first challenge was automating the cropping process, since the only relevant barnacles are the ones within the square. OpenCV was the most practical library to use. I looked over the documentation and attempted to detect the range of greens which mark the boundaries for the square, using a function to detect square like contour edges. The contour with the largest area was considered the centroid square. 
 
 Unfortunately, this was a pitfall because this only works for one image. I didn't want to spend too much time playing around with libraries so I decided to move forward.
 
-2. The next challenge was preprocessing the data. I had the necessary cropped input image but I needed to mask a binary mask with the masked images. This was also quite simple using OpenCV, detecting the contour edges of the mask( which was easy due to the sharp contrast ), filling in the edges, resulting in a binary mask of 0s and 1s, where 0 represents background and 1s represents a pixel associated with a barnacle.
+2.
+The next challenge was preprocessing the data. I had the necessary cropped input image but I needed to mask a binary mask with the masked images. This was also quite simple using OpenCV, detecting the contour edges of the mask( which was easy due to the sharp contrast ), filling in the edges, resulting in a binary mask of 0s and 1s, where 0 represents background and 1s represents a pixel associated with a barnacle.
 
-3. As mentioned before, the cropping only worked for one image. I used albumentations and OpenCV, with nested for loops to generate 600 images of varying noise, rotations, reflections, brightness and shifts. I would not be surprised if my model only worked for this one image since the weights are tailored specifically from 600 variations of one image. This is a major pitfall of the program.
+3.
+As mentioned before, the cropping only worked for one image. I used albumentations and OpenCV, with nested for loops to generate 600 images of varying noise, rotations, reflections, brightness and shifts. I would not be surprised if my model only worked for this one image since the weights are tailored specifically from 600 variations of one image. This is a major pitfall of the program.
 
-4. The U-Net is fantastic for segmentation. The issue with traditional CNNs is that as you extract higher level features, the resolution dissolves, and vice versa. With skip connections, U-Nets take the best in either end of spectrums : images are funneled into the encoder, decreasing resolution yet with higher levels of features. These features are saved. As the values pass the bottle neck and into the decoder, spatial dimensions increase once again while features decrease. Skip connections connect the higher level features of the encoder to the higher resolution of the decoder.
+4.
+The U-Net is fantastic for segmentation. The issue with traditional CNNs is that as you extract higher level features, the resolution dissolves, and vice versa. With skip connections, U-Nets take the best in either end of spectrums : images are funneled into the encoder, decreasing resolution yet with higher levels of features. These features are saved. As the values pass the bottle neck and into the decoder, spatial dimensions increase once again while features decrease. Skip connections connect the higher level features of the encoder to the higher resolution of the decoder.
 
 I initially had horrible precision, recall, and accuracy at around 40%, 40%, 60%. This is perhaps where I spent the most time. Initially, the model was predicitng all background pixels. I blamed my data at first and increase augmenting. I used a scheduled learning rate. I increased epochs ( though they plateued relatively early on ). I addressed class imbalances by using a ratio of ~2.5 in my loss function. None of this worked. 
 
