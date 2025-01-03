@@ -14,7 +14,7 @@ Nearest2n.py - Simple function that, given a number val, returns the nearest 2^n
 
 #**Performance Metrics**
 
-_Pixel accuracy: 0.9774
+**Pixel accuracy: 0.9774
 
 Precision: 0.9366
 
@@ -24,7 +24,7 @@ F1score: 0.9595
 
 Average ratio of 0s to 1s: 2.5102
 
-Training ratio of 0s to 1s: 2.6984_
+Training ratio of 0s to 1s: 2.6984**
 
 I created the last two metrics as a basic metric when tweaking the model:
   1. Average ratio of 0s to 1s was the average ratio of background pixels to barnacle pixels in the *predicted image*
